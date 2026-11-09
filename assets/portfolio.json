@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "name": "吴若萱",
+    "headline": "Software Developer / Embedded Linux / AI Applications",
+    "introduction": "中南大学生物医学工程本科生，关注软件开发、嵌入式 Linux 与边缘 AI。通过 Python 后端、模型部署和系统集成，把技术方案落到可运行的系统中。",
+    "seeking": "软件开发 · 实习机会",
+    "github": "https://github.com/wwwuan",
+    "email": "2581146661@qq.com",
+    "resume": "/files/resume.pdf",
+    "resumeAvailable": true,
+    "about": [
+      "我是中南大学生物医学工程专业本科生，关注后端开发、嵌入式 Linux 与边缘 AI，也在探索软件与硬件协同工作的方式。",
+      "目前的实践集中在 Python 后端开发、Linux 环境配置、模型部署和系统集成。我希望把接口、任务调度与端侧运行环境连接起来，让一个项目从代码走向完整的工作流程。"
+    ]
+  },
+  "education": {
+    "university": "中南大学",
+    "major": "生物医学工程",
+    "degree": "本科",
+    "period": "2024 / 2028",
+    "extra": ""
+  },
+  "skills": [
+    {
+      "title": "Programming",
+      "subtitle": "编程语言",
+      "icon": "code",
+      "items": [
+        "C",
+        "Python"
+      ]
+    },
+    {
+      "title": "Backend",
+      "subtitle": "后端开发",
+      "icon": "server",
+      "items": [
+        "Flask",
+        "FastAPI",
+        "MySQL",
+        "Redis"
+      ]
+    },
+    {
+      "title": "Embedded Linux",
+      "subtitle": "嵌入式系统",
+      "icon": "chip",
+      "items": [
+        "Linux",
+        "U-Boot",
+        "ARM",
+        "i.MX6ULL"
+      ]
+    },
+    {
+      "title": "Edge AI",
+      "subtitle": "端侧人工智能",
+      "icon": "terminal",
+      "items": [
+        "Jetson",
+        "Docker",
+        "llama.cpp",
+        "模型部署"
+      ]
+    },
+    {
+      "title": "Tools",
+      "subtitle": "开发工具",
+      "icon": "folder",
+      "items": [
+        "Git",
+        "Ubuntu",
+        "VS Code"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "all",
+      "label": "全部项目"
+    },
+    {
+      "id": "backend",
+      "label": "后端开发"
+    },
+    {
+      "id": "edge",
+      "label": "边缘 AI"
+    },
+    {
+      "id": "embedded",
+      "label": "嵌入式 Linux"
+    }
+  ],
+  "projects": [
+    {
+      "id": "pathology",
+      "number": "01",
+      "category": "backend",
+      "categoryLabel": "BACKEND DEVELOPMENT",
+      "title": "病理图像云分析平台",
+      "englishTitle": "Pathology Cloud Analysis",
+      "status": "后端功能已实现",
+      "statusType": "ready",
+      "role": "后端开发 · 异步任务管理",
+      "summary": "面向病理切片的批量图像处理后端：把上传、排队、分析与结果导出串成可追踪的异步工作流。",
+      "stack": [
+        "Python",
+        "Flask",
+        "MySQL",
+        "Redis"
+      ],
+      "features": [
+        "ZIP 批量上传、图片与项目任务管理。",
+        "Redis 队列与独立 Worker，支持用户并发控制。",
+        "任务状态与进度查询，分析结果导出为 Excel。"
+      ],
+      "contributions": [
+        "开发 Flask API 与数据模型，串联批量上传、项目查询和结果导出。",
+        "实现 Redis 任务排队、独立 Worker 调用分析服务及状态回写。"
+      ],
+      "github": "https://github.com/wwwuan/pathology-platform",
+      "cover": {
+        "src": "/images/pathology-cover.png",
+        "available": true
+      },
+      "video": {
+        "src": "/videos/pathology-demo.mp4",
+        "available": true,
+        "type": "video/mp4"
+      },
+      "visual": {
+        "title": [
+        ],
+        "label": "",
+        "nodes": [
+        ],
+        "theme": "mint",
+        "icon": "server"
+      },
+      "overview": "病理切片图像数量多，逐张同步提交会长时间占用请求连接。这个项目将图片接收与分析处理解耦：Flask 接收 ZIP 并登记项目，Redis 分发任务，独立 Worker 调用图像分析服务，MySQL 保存图片状态与分析结果。",
+      "flow": [
+        "ZIP 上传",
+        "Flask API",
+        "Redis 队列",
+        "独立 Worker",
+        "MySQL / 结果导出"
+      ],
+      "implementation": [
+        {
+          "title": "API 与数据管理",
+          "body": "使用 Flask 提供认证、上传、文件查询和导出接口，MySQL 保存用户、项目、图片及分析结果。"
+        },
+        {
+          "title": "任务排队与并发控制",
+          "body": "Redis 主队列接收可执行任务；超出用户并发上限的任务进入等待队列。Worker 完成处理后释放名额并调度后续任务。"
+        },
+        {
+          "title": "状态追踪与维护",
+          "body": "Worker 更新图片状态与数据库结果，并更新 Redis 项目进度。APScheduler 仅用于过期数据清理，不负责图片分析任务调度。"
+        }
+      ],
+      "ownership": [
+        {
+          "label": "本人负责",
+          "body": "Flask 后端 API、上传和任务管理、Redis 队列、Worker、状态与进度查询、批量处理及结果导出。"
+        },
+        {
+          "label": "外部依赖",
+          "body": "图像分析使用第三方 GLM 多模态 HTTP 接口；模型本身不属于本人训练或开发的成果。"
+        }
+      ],
+      "boundaries": [
+        "模型输出为图像内容描述，不作为医疗诊断结论。",
+        "当前资料未提供性能压测和处理准确率，因此不展示相关指标。"
+      ],
+      "nextSteps": [],
+      "sources": [
+        "README1.md",
+        "项目简介"
+      ]
+    },
+    {
+      "id": "jetson",
+      "number": "02",
+      "category": "edge",
+      "categoryLabel": "EDGE AI & SYSTEM INTEGRATION",
+      "title": "基于 Jetson 的端侧 AI 分析系统",
+      "englishTitle": "Jetson Edge AI System",
+      "status": "后端与集成实践",
+      "statusType": "ready",
+      "role": "后端开发 · 环境部署 · 系统集成",
+      "summary": "在 Jetson 端侧环境中连接显微镜图像、视觉模型与语言模型，完成后端接口对接和推理结果展示链路。",
+      "stack": [
+        "Jetson Orin Nano",
+        "Jetson AGX Thor",
+        "Ubuntu",
+        "Docker",
+        "Python",
+        "FastAPI",
+        "Vue",
+        "llama.cpp"
+      ],
+      "features": [
+        "Jetson 运行环境配置与第三方模型部署、适配。",
+        "图像保存、选择、删除接口与截图会话管理。",
+        "对接显微镜采集图像，流式返回模型输出。"
+      ],
+      "contributions": [
+        "开发 FastAPI 后端及图像管理、分析和流式响应接口。",
+        "负责环境配置、模型部署适配，以及既有前端与后端的联调。"
+      ],
+      "github": "https://github.com/wwwuan/jetson-edge-ai",
+      "cover": {
+        "src": "/images/jetson-cover.png",
+        "available": true
+      },
+      "video": {
+        "src": "/videos/jetson-demo.mp4",
+        "available": true,
+        "type": "video/mp4"
+      },
+      "visual": {
+        "title": [
+          "JETSON",
+          "EDGE AI"
+        ],
+        "label": "ON-DEVICE MODEL INTEGRATION",
+        "nodes": [
+          "图像采集",
+          "FastAPI",
+          "模型推理"
+        ],
+        "theme": "blue",
+        "icon": "chip"
+      },
+      "overview": "项目围绕 Jetson 上的图像分析工作流进行系统集成。前后端在同一台设备运行，使用临时目录组织图像、上下文与分析结果。本人负责后端接口、运行环境配置、模型部署适配，以及第三方前端和模型之间的连接。",
+      "flow": [
+        "USB 显微镜 / 截图",
+        "Vue 前端",
+        "FastAPI 后端",
+        "第三方视觉 / 语言模型",
+        "流式结果展示"
+      ],
+      "implementation": [
+        {
+          "title": "图像与会话管理",
+          "body": "FastAPI 提供图像保存、选择、删除和新建切片会话接口，图像、上下文与结果统一存放在临时任务目录。"
+        },
+        {
+          "title": "分析链路与流式响应",
+          "body": "后端对接视觉模型与语言模型封装，通过分析接口触发处理，通过 SSE 持续向前端返回模型输出。"
+        },
+        {
+          "title": "端侧环境与模型适配",
+          "body": "项目资料涉及 Jetson Orin Nano、Jetson AGX Thor、Ubuntu、Docker 与 llama.cpp。具体设备版本、量化配置和适配记录留待补充，不据此推导性能结论。"
+        }
+      ],
+      "ownership": [
+        {
+          "label": "本人负责",
+          "body": "FastAPI 后端 API、图像与会话管理、流式接口、Jetson 环境部署、模型运行适配、前后端集成。"
+        },
+        {
+          "label": "第三方提供",
+          "body": "视觉模型、语言模型与既有 Vue 前端代码。本人负责部署、适配与对接，不将这些模型或完整前端列为独立开发成果。"
+        }
+      ],
+      "boundaries": [
+        "模型输出展示属于工程集成实践，不作为医疗诊断结论。",
+        "量化方法、参数与测试结果尚未提供，不将量化优化或速度提升描述为已验证成果。"
+      ],
+      "nextSteps": [
+        "补充各 Jetson 设备对应的运行环境与部署记录。",
+        "补充 llama.cpp 量化和适配细节，以及真实演示素材。"
+      ],
+      "sources": [
+        "README2.md",
+        "项目简介"
+      ]
+    },
+    {
+      "id": "imx6ull",
+      "number": "03",
+      "category": "embedded",
+      "categoryLabel": "EMBEDDED LINUX",
+      "title": "i.MX6ULL 嵌入式 Linux 开发",
+      "englishTitle": "i.MX6ULL Embedded Linux",
+      "status": "进行中",
+      "statusType": "progress",
+      "role": "嵌入式 Linux 开发实践",
+      "summary": "围绕 ARM 开发板的系统配置、U-Boot 与 Linux 启动流程开展实践，逐步整理 LCD 调试和驱动开发记录。",
+      "stack": [
+        "i.MX6ULL",
+        "Linux",
+        "U-Boot",
+        "ARM",
+        "C"
+      ],
+      "features": [
+        "系统配置与启动流程：实践进行中。",
+        "LCD 调试：具体进度与记录待补充。",
+        "驱动开发：后续实践内容，尚未列为完成成果。"
+      ],
+      "contributions": [
+        "围绕 i.MX6ULL 开展嵌入式 Linux 开发实践。",
+        "具体已完成项与调试记录待补充，当前仅展示实践方向。"
+      ],
+      "github": "",
+      "cover": {
+        "src": "/images/imx6ull-cover.png",
+        "available": false
+      },
+      "video": {
+        "src": "/videos/imx6ull-demo.mp4",
+        "available": false,
+        "type": "video/mp4"
+      },
+      "visual": {
+        "title": [
+          "i.MX6ULL",
+          "LINUX"
+        ],
+        "label": "EMBEDDED DEVELOPMENT · IN PROGRESS",
+        "nodes": [
+          "U-Boot",
+          "Linux",
+          "LCD / 驱动"
+        ],
+        "theme": "slate",
+        "icon": "terminal"
+      },
+      "overview": "这是一个进行中的嵌入式 Linux 开发实践项目，关注 i.MX6ULL 平台上的系统配置、启动流程、LCD 调试与驱动开发。现有资料仅确认项目处于进行中，尚不足以列出具体已完成的移植、调试或驱动成果。",
+      "flow": [
+        "ARM / i.MX6ULL",
+        "U-Boot",
+        "Linux 启动",
+        "LCD 调试 / 驱动实践"
+      ],
+      "flowLabel": "计划实践路径",
+      "implementation": [
+        {
+          "title": "系统配置与启动流程",
+          "body": "实践方向。后续补充工具链、环境配置、启动日志与调试记录。"
+        },
+        {
+          "title": "LCD 调试",
+          "body": "具体进度待补充。添加真实调试记录后再更新完成状态。"
+        },
+        {
+          "title": "驱动开发",
+          "body": "后续实践内容。当前不展示已完成驱动、硬件运行效果或未经验证的功能。"
+        }
+      ],
+      "ownership": [
+        {
+          "label": "当前个人工作",
+          "body": "围绕 i.MX6ULL 的学习与开发实践；具体完成内容待本人补充后更新。"
+        }
+      ],
+      "boundaries": [
+        "项目状态为进行中，不将计划内容视为已完成。"
+      ],
+      "nextSteps": [
+        "补充已完成事项、对应代码与启动日志。",
+        "补充 LCD 调试进展及真实运行素材。",
+        "按实际进度更新驱动开发记录。"
+      ],
+      "sources": [
+        "项目简介"
+      ]
+    }
+  ]
+}

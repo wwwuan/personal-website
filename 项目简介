@@ -1,0 +1,62 @@
+# Personal Portfolio - Project Information
+
+## About Me
+
+- University: Central South University
+- Major: Biomedical Engineering
+- Position: Software Developer Intern
+- Technical Interests: Embedded Linux, Backend Development, Edge AI
+
+## Project 1: Pathology Cloud Analysis Platform
+
+Technologies:
+Python, Flask, MySQL, Redis
+
+Responsibilities:
+- Backend API development
+- Image upload and task management
+- Redis-based asynchronous task queue
+- Independent background worker
+- Task status and progress query
+- Batch processing and result export
+
+Demo:
+`/videos/pathology-demo.mp4`
+
+Cover:
+`/images/pathology-cover.png`
+
+## Project 2: Jetson Edge AI Analysis System
+
+Technologies:
+Jetson Orin Nano, Jetson AGX Thor, Ubuntu, Docker, FastAPI, Vue, llama.cpp
+
+Responsibilities:
+- Edge deployment environment configuration
+- Model deployment and adaptation
+- Backend API development
+- Frontend and backend integration
+- USB microscope image acquisition and inference result display
+
+Demo:
+`/videos/jetson-demo.mp4`
+
+Cover:
+`/images/jetson-cover.png`
+
+## Project 3: i.MX6ULL Embedded Linux Development
+
+Technologies:
+i.MX6ULL, Linux, U-Boot, ARM, C
+
+Status:
+In Progress
+
+Demo:
+`/videos/imx6ull-demo.mp4`
+
+Cover:
+`/images/imx6ull-cover.png`
+
+Note:
+Only display completed features. Do not fabricate implementation results.
