@@ -33,7 +33,8 @@ export function safeWebURL(value) {
   catch { return ""; }
 }
 export function localAsset(value) {
-  return typeof value === "string" && /^\/(images|videos|files)\/[a-zA-Z0-9_./-]+$/.test(value) && !value.includes("..") ? value : "";
+  // Data paths refer to the portfolio directory, including on GitHub Pages.
+  return typeof value === "string" && /^\/(images|videos|files)\/[a-zA-Z0-9_./-]+$/.test(value) && !value.includes("..") ? "." + value : "";
 }
 export function toast(message) {
   const target = document.getElementById("toast");
@@ -44,7 +45,7 @@ export function toast(message) {
 }
 export function renderShell(profile) {
   const home = document.body.dataset.page === "home";
-  const prefix = home ? "" : "/index.html";
+  const prefix = home ? "" : "./index.html";
   const links = [["about","关于"],["projects","精选项目"],["skills","技术栈"],["education","教育"]];
   document.getElementById("site-header").innerHTML = '<div class="nav-wrap container">' +
     '<a class="brand" href="' + prefix + '#home" aria-label="作品集首页"><span class="brand-mark">' + icon("code") + '</span><span>DEV<span class="brand-dot">.</span>FOLIO</span></a>' +

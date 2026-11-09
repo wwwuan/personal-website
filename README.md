@@ -181,6 +181,14 @@ python tests/browser_check.py
 
 网站可以部署到静态托管服务，无需构建。发布 `index.html`、`project.html`、`favicon.svg` 和 `assets/`、`styles/`、`scripts/`、`images/`、`videos/`、`files/`。
 
-当前资源 URL 以站点根目录为基准，适合独立域名或根路径部署。若部署到 GitHub Pages 的仓库子路径，需要统一调整资源 URL 与链接前缀。正式视频托管建议支持 HTTP Range 请求。
+页面链接和资源加载使用相对路径，同时支持独立域名根目录与 GitHub Pages 仓库子路径，例如 `https://wwwuan.github.io/personal-website/`。`assets/portfolio.json` 中 `/images/...`、`/videos/...` 和 `/files/...` 的写法仍然有效，代码会将它们解析为作品集目录下的资源，不需要手动添加仓库名。正式视频托管建议支持 HTTP Range 请求。
 
-`main.py` 是本地预览入口。本站尚未发布到外网；当前应先补充个人信息、源码链接、简历与真实素材，再提供给招聘者。
+GitHub Pages 更新方法：将修改后的 HTML、`scripts/` 及其他网站文件提交并推送到实际发布的分支，在仓库 **Settings → Pages** 确认发布来源。如果使用 **Deploy from a branch**，选择存放 `index.html` 的分支和目录（当前项目通常为 `main` / `root`）；如果已经使用 GitHub Actions，检查工作流发布的目录包含这些文件。部署成功后，从 Pages 显示的站点地址进入网站，再检查项目详情和返回首页。修改路径后如仍显示旧页面，可按 `Ctrl+F5` 强制刷新。
+
+可以运行以下浏览器回归检查，自动模拟根目录、`/personal-website/` 与多层子路径的部署环境，验证首页、详情、返回链接、刷新、移动导航以及简历和媒体路径；不读取真实项目媒体：
+
+```powershell
+python tests/pages_check.py
+```
+
+`main.py` 是本地预览入口，GitHub Pages 直接托管静态文件，不运行 Python。发布前请确认个人信息、源码链接、简历和素材均已按实际情况补充。

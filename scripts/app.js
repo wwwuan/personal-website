@@ -16,7 +16,7 @@ async function checkResume(profile) {
 
 async function init() {
   try {
-    const response = await fetch("/assets/portfolio.json");
+    const response = await fetch("./assets/portfolio.json");
     if (!response.ok) throw new Error("Unable to load portfolio data");
     const data = await response.json();
     if (!data.profile || !Array.isArray(data.projects)) throw new Error("Invalid portfolio data");

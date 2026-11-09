@@ -20,7 +20,7 @@ function renderCard(project) {
     projectTags(project) + '<div class="project-copy"><div class="project-features"><h4>' + (project.statusType === "progress" ? '当前实践范围' : '核心功能') +
     '</h4><ul>' + project.features.map(text => '<li>' + e(text) + '</li>').join("") + '</ul></div>' +
     '<div class="project-contribution"><h4>我的贡献</h4><p>' + project.contributions.map(e).join("<br>") + '</p></div></div>' +
-    '<div class="project-actions">' + sourceLink(project) + '<a class="text-link" href="/project.html?id=' + encodeURIComponent(project.id) + '">项目详情 ' + icon("arrow") +
+    '<div class="project-actions">' + sourceLink(project) + '<a class="text-link" href="./project.html?id=' + encodeURIComponent(project.id) + '">项目详情 ' + icon("arrow") +
     '</a></div></div></article>';
 }
 
